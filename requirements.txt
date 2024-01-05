@@ -16,6 +16,8 @@ dnspython==2.4.2
 flask==3.0.0
 frozenlist==1.4.1
 future==0.18.3
+gevent==23.9.1
+greenlet==3.0.3
 idna==3.6
 itsdangerous==2.1.2
 Jinja2==3.1.2
@@ -38,3 +40,5 @@ werkzeug==3.0.1
 wrapt==1.16.0
 yarl==1.9.4
 youtube-transcript-api==0.6.2
+zope.event==5.0
+zope.interface==6.1
