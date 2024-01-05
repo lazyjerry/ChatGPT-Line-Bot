@@ -1,5 +1,7 @@
 from dotenv import load_dotenv
 from flask import Flask, request, abort
+from gevent import pywsgi
+
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -193,4 +195,6 @@ if __name__ == "__main__":
             model_management[user_id] = OpenAIModel(api_key=data[user_id])
     except FileNotFoundError:
         pass
-    app.run(host='127.0.0.1', port=9123)
+    # app.run(host='127.0.0.1', port=9123)
+    server = pywsgi.WSGIServer(('127.0.0.1', 9123), app)
+    server.serve_forever()
