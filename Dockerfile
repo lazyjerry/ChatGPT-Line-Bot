@@ -1,6 +1,6 @@
 FROM python:3.9-alpine
 
-
+VOLUME ["/app"]
 WORKDIR /app
 
 RUN ls -la
