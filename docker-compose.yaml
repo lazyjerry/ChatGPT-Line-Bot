@@ -8,5 +8,5 @@ services:
     ports:
       - "${APP_PORT}:${APP_PORT}"
     networks:
-      proxy:
+      default:
         ipv4_address: 192.168.128.1
