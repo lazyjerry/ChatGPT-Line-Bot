@@ -1,13 +1,9 @@
-version: "3.8"
+version: "3"
 
 services:
   app:
-    volumes:
-      - /website/ChatGPT-Line-Bot/app:/app
-    build: .
     container_name: ChatGPT-Line-Bot
+    build: .
     restart: always
     ports:
       - "${APP_PORT}:${APP_PORT}"
-    
-    
