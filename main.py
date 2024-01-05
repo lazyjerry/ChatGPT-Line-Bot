@@ -40,15 +40,19 @@ api_keys = {}
 
 @app.route("/callback", methods=['POST'])
 def callback():
-    signature = request.headers['X-Line-Signature']
-    body = request.get_data(as_text=True)
-    app.logger.info("Request body: " + body)
-    try:
-        handler.handle(body, signature)
-    except InvalidSignatureError:
+    if 'X-Line-Signature' in request.headers:
+        signature = request.headers['X-Line-Signature']
+        body = request.get_data(as_text=True)
+        app.logger.info("Request body: " + body)
+        try:
+            handler.handle(body, signature)
+        except InvalidSignatureError:
+            print("Invalid signature. Please check your channel access token/channel secret.")
+            abort(400)
+        return 'OK'
+    else:
         print("Invalid signature. Please check your channel access token/channel secret.")
         abort(400)
-    return 'OK'
 
 
 @handler.add(MessageEvent, message=TextMessage)
