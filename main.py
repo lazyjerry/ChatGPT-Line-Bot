@@ -58,8 +58,8 @@ def handle_text_message(event):
     logger.info(f'{user_id}: {text}')
 
     try:
-        if text.startswith('/reg'):
-            api_key = text[4:].strip()
+        if text.startswith('/register'):
+            api_key = text[9:].strip()
             model = OpenAIModel(api_key=api_key)
             is_successful, _, _ = model.check_token_valid()
             if not is_successful:
@@ -74,7 +74,7 @@ def handle_text_message(event):
             msg = TextSendMessage(text="指令：\n/register + API Token\n👉 API Token 請先到 https://platform.openai.com/ 註冊登入後取得\n\n/cosplay + Prompt\n👉 Prompt 可以命令機器人扮演某個角色，例如：請你扮演擅長做總結的人\n\n/clear\n👉 當前每一次都會紀錄最後兩筆歷史紀錄，這個指令能夠清除歷史訊息\n\n/image + Prompt\n👉 以文字生成圖像\n\輸入語音\n👉 將語音轉換成文字，再調用 ChatGPT 以文字回覆\n\n其他文字輸入\n👉 調用 ChatGPT 以文字回覆")
 
         elif text.startswith('/cosplay'):
-            userModal = text[8:].strip()
+            userModal = text[9:].strip()
             memory.change_system_message(user_id, userModal)
             msg = TextSendMessage(text=userModal+'輸入成功')
 
@@ -83,7 +83,7 @@ def handle_text_message(event):
             msg = TextSendMessage(text='歷史訊息清除成功')
 
         elif text.startswith('/image'):
-            prompt = text[6:].strip()
+            prompt = text[7:].strip()
             memory.append(user_id, 'user', prompt)
             is_successful, response, error_message = model_management[user_id].image_generations(prompt, os.getenv('OPENAI_MODEL_ENGINE_IMAGE'))
             if not is_successful:
