@@ -10,3 +10,9 @@ services:
     networks:
       default:
         ipv4_address: 192.168.128.1
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/24
