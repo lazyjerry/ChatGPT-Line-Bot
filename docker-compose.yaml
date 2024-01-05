@@ -8,4 +8,4 @@ services:
     ports:
       - "${APP_PORT}:${APP_PORT}"
     volumes:
-    - './:/ChatGPT-Line-Bot'
+    - './:/app'
