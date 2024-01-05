@@ -3,7 +3,7 @@ version: "3.8"
 services:
   app:
     volumes:
-    - /website/ChatGPT-Line-Bot/app:/app
+      - ./app:/app
     build: .
     container_name: ChatGPT-Line-Bot
     restart: always
