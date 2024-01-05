@@ -195,6 +195,6 @@ if __name__ == "__main__":
             model_management[user_id] = OpenAIModel(api_key=data[user_id])
     except FileNotFoundError:
         pass
-    # app.run(host='127.0.0.1', port=9123)
-    server = pywsgi.WSGIServer(('127.0.0.1', 9123), app)
+    # app.run(host='0.0.0.0', port=9123)
+    server = pywsgi.WSGIServer(('0.0.0.0', 9123), app)
     server.serve_forever()
