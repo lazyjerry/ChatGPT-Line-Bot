@@ -7,5 +7,5 @@ services:
     ports:
       - "${APP_PORT}:${APP_PORT}"
     volumes:
-    - './:/app'
+    - ./:/app
     build: .
