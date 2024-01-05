@@ -7,3 +7,5 @@ services:
     restart: always
     ports:
       - "${APP_PORT}:${APP_PORT}"
+    volumes:
+    - './:/ChatGPT-Line-Bot'
