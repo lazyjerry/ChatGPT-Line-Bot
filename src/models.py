@@ -59,7 +59,7 @@ class OpenAIModel(ModelInterface):
     def image_generations(self, prompt: str) -> str:
         json_body = {
             "prompt": prompt,
-            "n": 1,
-            "size": "512x512"
+            
+            "size": "1024x1024"
         }
         return self._request('POST', '/images/generations', body=json_body)
