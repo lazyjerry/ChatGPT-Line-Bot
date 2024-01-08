@@ -12,7 +12,7 @@ class ModelInterface:
     def audio_transcriptions(self, file, model_engine: str) -> str:
         pass
 
-    def image_generations(self, prompt: str) -> str:
+    def image_generations(self, prompt: str, model_engine: str) -> str:
         pass
 
 
@@ -56,9 +56,11 @@ class OpenAIModel(ModelInterface):
         }
         return self._request('POST', '/audio/transcriptions', files=files)
 
-    def image_generations(self, prompt: str) -> str:
+    def image_generations(self, prompt: str, model_engine: str) -> str:
         json_body = {
+            "model": model_engine,
             "prompt": prompt,
+            "n": 1,
             "size": "1024x1024"
         }
         return self._request('POST', '/images/generations', body=json_body)
